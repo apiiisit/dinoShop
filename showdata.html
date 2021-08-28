@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Shop | Dino</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img class="mb-4" src="/image/dino.png" width="48px">
+            DinoShop
+        </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <img src="https://fonts.gstatic.com/s/i/materialicons/account_circle/v15/24px.svg" width="26px">&nbsp;
+              <h4 id='username'></h4>
+            </ul>
+
+            <img src="https://fonts.gstatic.com/s/i/materialicons/shopping_cart/v16/24px.svg" width="26px" data-bs-toggle="modal" data-bs-target="#modal_addShop">
+            <p style="color: #ff0000"><span id="addShop" class="badge bg-danger"></span></p>
+
+            &nbsp;
+            <a id="btn" onclick="window.location.href=window.location.origin+'/selectmode.html'+window.location.search.split('&')[0]"  type="submit" class="btn btn-secondary">กลับหน้าหลัก</a>
+            &nbsp;
+            <a href="index.html" type="submit" class="btn btn-secondary">ออกจากระบบ</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container text-center">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="image/bg1.jpg" class="d-block" style="width: 100%; height: 600px;">
+              </div>
+              <div class="carousel-item">
+                <img src="image/bg2.jpg" class="d-block" style="width: 100%; height: 600px;">
+              </div>
+              <div class="carousel-item">
+                <img src="image/bg3.jpg" class="d-block" style="width: 100%; height: 600px;">
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <hr>
+        
+        <div class="row">
+          <div class="col">
+            
+            <img src="image/bag.jpg" width="60%" alt="กระเป๋า" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 0)">
+            
+          </div>
+          <div class="col">
+            
+            <img src="image/shoe.jpg" width="60%" alt="รองเท้า" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 1)">
+
+          </div>
+          <div class="col">
+
+            <img src="image/clothes.jpg" width="60%" alt="เสื้อผ้า" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 2)">
+
+          </div>
+
+        </div>
+
+        <div class="row mb-5">
+          <div class="col">
+
+            <img src="image/yoka.jpg" width="60%" alt="ชุดเล่นโยคะ" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 3)">
+
+          </div>
+          <div class="col">
+
+            <img src="image/golf.jpg" width="60%" alt="ไม้กอล์ฟ" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 4)">
+
+          </div>
+          <div class="col">
+
+            <img src="image/hat.jpg" width="60%" alt="หมวก" data-bs-toggle="modal" data-bs-target="#modal" onclick="show_detail(alt, 5)">
+
+          </div>
+
+        </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img id="img-body" width="40%">
+                <h5 style="color: #ff0000"><b id="price_body"></b></h5>
+                <p id="detail_body"></p>
+              </div>
+              <div class="modal-footer">
+                <button onclick="addShop()" id="liveToastBtn" type="button" class="btn btn-danger" data-bs-dismiss="modal">เพิ่มไปยังรถเข็น</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modal_addShop" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" style="width: 23%;">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="title_addShop">รายละเอียดการสั่งซื้อ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h6 id="detail_addShop">ไม่มีสินค้า</h6>
+              </div>
+              <div class="modal-footer">
+                <h6 id="sumPrice"></h6>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">ซื้อ</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="image/dino.png" class="rounded me-2" width="16px">
+            <strong class="me-auto">DinoShop</strong>
+            <small>ล่าสุด</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div id="toast-body" class="toast-body"></div>
+        </div>
+      </div>
+
+
+    <script>
+      const url = window.location.search.split('&')
+      const btn = document.getElementById('btn')
+      document.getElementById("username").innerHTML=url[0].replace("?username=", "")
+      if (!url[1]) btn.remove()
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script>
+      const toastTrigger = document.getElementById('liveToastBtn')
+      const toastLiveExample = document.getElementById('liveToast')
+      if (toastTrigger) {
+        toastTrigger.addEventListener('click', function () {
+          const toast = new bootstrap.Toast(toastLiveExample)
+          const body = document.getElementById("toast-body")
+          
+          const title = document.getElementById("ModalLabel")
+          const price_body = document.getElementById("price_body")
+
+          body.innerHTML = `${title.innerHTML} ${price_body.innerHTML}`
+          toast.show()
+        })
+      }
+
+    </script>
+
+  </body>
+</html>
