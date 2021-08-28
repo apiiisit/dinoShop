@@ -1,0 +1,2 @@
+# dinoShop
+Static website example
